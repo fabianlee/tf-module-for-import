@@ -7,7 +7,9 @@ output "project" {
   value = try(data.google_client_config.this.project,"?")
 }
 
-# show all output
-output "mymodmap1-output-all" {
+output "mymodmap-output-all" {
   value = module.mymodmap
+}
+output "mymodlist-output-all" {
+  value = module.mymodlist
 }

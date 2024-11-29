@@ -2,6 +2,11 @@ variable name {
   type = string
 }
 
+output theindex {
+  value = var.name
+}
+ 
+
 # to remove module and all its resources from state
 # terraform state rm module.mymodlist[\"<index>\"]
 
