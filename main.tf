@@ -13,6 +13,12 @@ locals {
 
 data "google_client_config" "this" {}
 
+# simple module
+module "mysimplemod" {
+  source = "./gcp-storage-bucket"
+  name = "test"
+}
+
 # modules based on attribute from map of objects
 module "mymodmap" {
   source = "./gcp-storage-bucket"
