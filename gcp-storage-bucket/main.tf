@@ -21,6 +21,11 @@ resource "google_service_account" "default" {
 # terraform import module.mymodlist[\"<index>\"].google_pubsub_topic.default projects/<projId>/topics/<topicId>
 resource "google_pubsub_topic" "default" {
   name = "topic-${var.name}"
+
+  # import does not pull in label 'goog-terraform-provisioned'
+  lifecycle {
+    ignore_changes = [ terraform_labels ]
+  }
 }
 
 # https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/storage_bucket
@@ -29,8 +34,14 @@ resource "google_storage_bucket" "default" {
   name                        = "bucket-${var.name}-${random_id.bucket_prefix.hex}" # Every bucket name must be globally unique
   location                    = "US"
   uniform_bucket_level_access = true
+  force_destroy               = true
   versioning {
     enabled = true
+  }
+
+  # import does not pull in label 'goog-terraform-provisioned'
+  lifecycle {
+    ignore_changes = [ terraform_labels ]
   }
 }
 
