@@ -11,7 +11,7 @@ output theindex {
 # terraform state rm module.mymodlist[\"<index>\"]
 
 # https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/id
-# terraformm import module.mymodlist[\"<index>\"].random_id.bucket_prefix <randValue>
+# terraform import module.mymodlist[\"<index>\"].random_id.bucket_prefix <randValue>
 resource "random_id" "bucket_prefix" {
   byte_length = 8
 }
